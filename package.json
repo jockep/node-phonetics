@@ -4,8 +4,10 @@
 	"description": "Collection of functions for phonetic algorithms.",
 	"main": "./dist/phonetics.js",
 	"scripts": {
-		"compile": "tsc",
-		"test": "npx jest"
+		"test": "npx jest",
+		"build": "rm -rf ./dist/ && npx tsc",
+		"preversion": "npm run build && npm run test && git add ./ && git commit .",
+		"postversion": "git push && git push --tags"
 	},
 	"keywords": [],
 	"author": "jockep",

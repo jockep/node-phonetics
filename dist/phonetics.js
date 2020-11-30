@@ -36,9 +36,7 @@ let Soundex = (input) => __awaiter(void 0, void 0, void 0, function* () {
     if (soundexString.length > 4) {
         soundexString = soundexString.substring(0, 4);
     }
-    while (soundexString.length < 4) {
-        soundexString += "0";
-    }
+    soundexString = soundexString.padEnd(4, "0");
     return soundexString;
 });
 exports.Soundex = Soundex;

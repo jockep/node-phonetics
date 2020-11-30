@@ -31,9 +31,7 @@ export let Soundex = async (input: string): Promise<string> => {
 		soundexString = soundexString.substring(0, 4);
 	}
 
-	while (soundexString.length < 4) {
-		soundexString += "0"
-	}
+	soundexString = soundexString.padEnd(4, "0");
 
 	return soundexString;
 }
