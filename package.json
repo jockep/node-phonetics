@@ -6,7 +6,7 @@
 	"scripts": {
 		"test": "npx jest",
 		"build": "rm -rf ./dist/ && npx tsc",
-		"preversion": "npm run build && npm run test && git add ./ && git commit .",
+		"preversion": "npm run build && npm run test && git add ./",
 		"postversion": "git push && git push --tags"
 	},
 	"keywords": [],
