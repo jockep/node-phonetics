@@ -24,3 +24,9 @@ describe("Soundex", () => {
         expect(soundexInput).toHaveLength(4);
     }));
 });
+describe("MatchRating", () => {
+    test("Should rate two strings using the Match rating algorithm", () => __awaiter(void 0, void 0, void 0, function* () {
+        let matchRatingInput = yield phonetics_1.MatchRatingEncoding('Byrne');
+        console.log(matchRatingInput);
+    }));
+});

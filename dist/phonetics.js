@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Soundex = void 0;
+exports.MatchRatingEncoding = exports.MatchRating = exports.Soundex = void 0;
 let Soundex = (input) => __awaiter(void 0, void 0, void 0, function* () {
     input = input.toLowerCase();
     let soundexConversionTable = [
@@ -40,3 +40,38 @@ let Soundex = (input) => __awaiter(void 0, void 0, void 0, function* () {
     return soundexString;
 });
 exports.Soundex = Soundex;
+let MatchRating = (input1, input2) => __awaiter(void 0, void 0, void 0, function* () {
+    input1 = yield exports.MatchRatingEncoding(input1);
+});
+exports.MatchRating = MatchRating;
+let MatchRatingEncoding = (input) => __awaiter(void 0, void 0, void 0, function* () {
+    input = input.toLowerCase();
+    let vowels = ['a', 'e', 'i', 'o', 'u'];
+    let characters = [...input];
+    let matchRatingString = "";
+    for (let i = 0; i < characters.length; i++) {
+        if (i == 0) {
+            matchRatingString += characters[i];
+        }
+        if (!vowels.includes(characters[i])) {
+            matchRatingString += characters[i];
+        }
+    }
+    let encodedCharacters = [...matchRatingString];
+    let skipNext = false;
+    let finalMatchRatingString = "";
+    for (let i = 0; i < encodedCharacters.length; i++) {
+        if (skipNext) {
+            skipNext = false;
+            continue;
+        }
+        if (!vowels.includes(encodedCharacters[i]) && i !== (encodedCharacters.length - 1)) {
+            if (encodedCharacters[i] = encodedCharacters[i + 1]) {
+                skipNext = true;
+            }
+        }
+        finalMatchRatingString += encodedCharacters[i];
+    }
+    return finalMatchRatingString;
+});
+exports.MatchRatingEncoding = MatchRatingEncoding;
